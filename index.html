@@ -1,114 +1,50 @@
 <!DOCTYPE html>
+
 <html>
-<body>
-
-</body>
-
-<script>
-
-    
-    function computerPlay() {
-
-        // Made an array with the possible selections from the computer
-        let answers = ["Rock", "Paper", "Scissors"];
-        // Generate a random number between 0 and 2 which are the possible indexes from answers
-        let pick = Math.random() * (2);
-        // Take the number and use it as index to take a selection from array
-        pick = Math.round(pick);
-        // Return the string from the array
-        return answers[pick];
-
-    }
-
-    function playRound(playerSelection, computerSelection) {
+    <head>   
         
-        // Convert both selections into lowercase for better handling
-        playerSelection = playerSelection.toLowerCase();
-        computerSelection = computerSelection.toLowerCase();
-        
-        // Create all possible game combinations
-        if (playerSelection === computerSelection) {
-            return "It's a tie!"
-        }
-        else if (playerSelection === "rock") {
-            if (computerSelection === "paper") {
-                return "You lose! Paper beats Rock";
-            }
-            else {
-                return "You win! Rock beats Scissors"
-            }
-        }    
-        else if (playerSelection === "paper") {
-            if (computerSelection === "scissors") {
-                return "You lose! Scissors beats Paper";
-            }
-            else {
-                return "You win! Paper beats Rock"
-            }        
-        }    
-        else if (playerSelection === "scissors") {
-            if (computerSelection === "rock") {
-                return "You lose! Rock beats Scissors";
-            }
-            else {
-                return "You win! Scissors beats Paper"
-            }        
-        }   
-        
-    }
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
 
-    function game() {
-        
-        // Create two variables to record the wins and loses
-        let playerScore = 0;
-        let computerScore = 0;
+        <title>Rock, Paper, Scissors!</title>
 
-        // Create a for loop to run 5 rounds
-        let i;
-        for (i = 0; i < 5; i++) {
+    </head>
+    <body>
+        <div id="scoreBoard" class="scoreBoard">
+            <div id="playerSelection">
 
-            // Ask player for selection ans save it
-            let playerSelection = prompt("Rock, Paper or Scissors", "Type here");
-            // Save selection from computer using previous function
-            let computerSelection = computerPlay();
-            // Create an array to save 
+            </div>
+            <div id="innerScoreBoard">
+                <h1 id="scores">0 - 0</h1>
+                <h2 id="scoreInfo">Make a selection!</h2>
+            </div>
+            <div id="computerSelection">
+                
+            </div>
+        </div>
+        <div id="buttonsContainer">
+            <div></div>
+            <div>
+                <button id="rockButton" class="selectionButton button1">Rock</button>
+            </div>
+            <div>
+                <button id="paperButton" class="selectionButton button1">Paper</button>
+            </div>
+            <div>
+                <button id="scissorsButton" class="selectionButton button1">Scissors</button>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div id="resetButtonCont">
+                <button id="resetButton" class="button1">Play Again</button>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+    </body>
 
-            // Play a round using previous function
-            roundResult = playRound(playerSelection, computerSelection);
-
-            // Add one point to the proper score depending on the result and show an alarm showing the scores
-            if (roundResult.slice(0,9) === "You lose!") {
-                computerScore++;
-                alert(`You: ${playerScore} - Computer ${computerScore}`);
-            }
-            else if (roundResult.slice(0,8) === "You win!") {
-                playerScore++;
-                alert(`You: ${playerScore} - Computer ${computerScore}`);
-            }
-            else {
-                alert(`You: ${playerScore} - Computer ${computerScore}`);
-            }
-        
-        }
-        
-        // Show an alarm with the final result
-        if (playerScore > computerScore) {
-            alert("Congrats, you win!");
-        }
-        else if (playerScore < computerScore) {
-            alert("Sorry, you lose!");
-        }
-        else { 
-            alert("It's a tie!")
-        }
-
-
-    }
-
-
-
-
-</script>
+    <script src="scripts/script.js"></script>
 
 
 </html> 
